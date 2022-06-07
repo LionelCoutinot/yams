@@ -1,0 +1,663 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+    	<meta name="description" content="jeu de yams">
+    	<meta name="author" content="Lionel Coutinot">
+    	<meta name="revisit-after" content="30 days">
+    	<meta http-equiv="title" content="Yams">
+    	<meta name="distribution" content="Global">
+    	<meta name="rating" content="General">
+    	<meta name="robots" content="All">
+    	<meta http-equiv="content-language" content="fr">
+    	<meta charset="UTF-8" /> 
+    	<title>Yams</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+	<body onLoad="init(); initial()" onKeyPress="BloqSubmit()">
+		<div class="container-fluid">
+        	<div class="row">
+				<div class="col-12">
+					<div class="d-flex justify-content-end me-2">
+						<div id="clock"> <span id="ancrage"></span></div>
+					</div>
+				</div>	
+				<div class="col-12  col-md-8 offset-md-2">
+					<div class="d-flex justify-content-center ms-4">
+						<div  id="buttons-position">
+							<form name="form1" id="form1">
+								<div class="row">							
+									<div class="col-12 d-flex justify-content-center">
+										<input type="button" value="Lancez les dés !" id="timble" onClick="adressealeatoire()" class="style-buttons" />
+										<input type="reset"  onclick="init()" value = "Réinitialisez" class="style-buttons ms-5" />
+									
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>	
+				<div class="d-flex justify-content-center">
+					<p id="ancre"></p>
+				</div>
+			</div>				
+			<div class="row mt-4">
+				<div  class="col-6">
+					<div class="d-flex justify-content-end me-5">
+						<span id="gg"   class="py-2 px-2 mb-3">
+							<img src="images/face0.gif"  id="uneImage1" onclick="garde1()"/>
+						</span>
+					</div>
+				</div>
+				<div  class="col-6">
+                	<div class="d-flex justify-content-start ms-5">
+                    	<span id="gg1" class="py-2 px-2  mb-3">
+                        	<img src="images/face0.gif"  id="uneImage2" onclick="garde2()"/>
+						</span>
+					</div>
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col-2 offset-5">
+					<div class="d-flex justify-content-center">	
+						<span id="gg2" class="py-2 px-2  mb-3">
+							<img src="images/face0.gif"  id="uneImage3" onclick="garde3()"/>
+						</span>
+					</div>
+				</div>
+			</div>	
+			<div class="row">
+				<div  class="col-6">
+					<div class="d-flex justify-content-end me-5" >
+						<span id="gg3" class="py-2 px-2  mb-3">
+							<img src="images/face0.gif"  id="uneImage4" onclick="garde4()"/>
+						</span>
+					</div>
+				</div>
+				<div  class="col-6">
+                	<div class="d-flex justify-content-start ms-5" >
+						<span id="gg4" class="py-2 px-2  mb-3">
+							<img src="images/face0.gif"  id="uneImage5" onclick="garde5()"/>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">	
+				<div class="col-12  col-md-6 offset-md-3">
+					<table class="table table-bordered"   id="tableau2">
+						<thead>
+							<th>
+								<td>
+									<b><span class="padding-horizontal-tableau3">Joueur 1</span></b>
+								</td>
+								<td>
+									<b><span class="padding-horizontal-tableau3">Joueur 2</span></b>
+								</td>
+								<td>
+									<b><span class="padding-horizontal-tableau3">Joueur 3</span></b>
+								</td>
+								<td>
+									<b><span class="padding-horizontal-tableau3">Joueur 4</span></b>
+								</td>
+							</th>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="padding2-horizontal-tableau2 padding-vertical-tableau2">
+									Un
+								</td>
+								<td>
+									<div>
+										<form name="forma" id="forma" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10" name="un" id="un" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="forma1" id="forma1" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10" name="un1" id="un1" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td >
+									<div>
+										<form name="forma2" id="forma2" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999"  size="10" name="un2" id="un2" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="forma3" id="forma3"class="padding-vertical-tableau2" >
+											<input type="number" min="0" max="999"  size="10" name="un3" id="un3" class="align-right">
+										</form>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="padding2-horizontal-tableau2 padding-vertical-tableau2">
+									Deux
+								</td>
+								<td>
+									<div>
+										<form name="formb" id="formb" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="deux" id="deux" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formb1" id="formb1" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="deux1" id="deux1" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formb2" id="formb2" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="deux2" id="deux2" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formb3" id="formb3" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="deux3" id="deux3" class="align-right">
+										</form>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="padding2-horizontal-tableau2 padding-vertical-tableau2" >
+									Trois
+								</td>
+								<td>
+									<div>
+										<form name="formc" id="formc" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="trois" id="trois" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formc1" id="formc1" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="trois1" id="trois1" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formc2" id="formc2" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="trois2" id="trois2" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formc3" id="formc3" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="trois3" id="trois3" class="align-right">
+										</form>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="padding2-horizontal-tableau2 padding-vertical-tableau2 ">
+									Quatre
+								</td>
+								<td>
+									<div>
+										<form name="formd" id="formd" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="quatre" id="quatre" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div> 
+										<form name="formd1" id="formd1" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="quatre1" id="quatre1" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formd2" id="formd2" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="quatre2" id="quatre2" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formd3" id="formd3" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="quatre3" id="quatre3" class="align-right">
+										</form>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="padding2-horizontal-tableau2 padding-vertical-tableau2 ">
+									Cinq
+								</td>
+								<td>
+									<div>
+										<form name="forme" id="forme" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="cinq" id="cinq" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="forme1" id="forme1" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="cinq1" id="cinq1" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="forme2" id="forme2" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="cinq2" id="cinq2" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="forme3" id="forme3" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="cinq3" id="cinq3" class="align-right">
+										</form>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="padding2-horizontal-tableau2 padding-vertical-tableau2 ">
+									Six
+								</td>
+								<td>
+									<div>
+										<form name="formf" id="formf" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="six" id="six" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formf1" id="formf1" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="six1" id="six1" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formf2" id="formf2"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="six2" id="six2" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formf3" id="formf3" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="six3" id="six3" class="align-right">
+										</form>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="padding2-horizontal-tableau2 padding-vertical-tableau2 ">
+									Bonus
+								</td>
+								<td>
+									<div>
+										<form name="formt" id="formt"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999"  size="10" name="bonus" id="bonus" readonly class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formt1" id="formt1"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="bonus1" id="bonus1" readonly class="align-right">
+										</form>
+										</div>
+								</td>
+								<td>
+									<div>
+										<form name="formt2" id="formt2"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="bonus2" id="bonus2" readonly class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formt3" id="formt3" class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="bonus3" id="bonus3" readonly class="align-right">
+										</form>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="padding2-horizontal-tableau2 padding-vertical-tableau2">
+									Brelan
+								</td>
+								<td>
+									<div>
+										<form name="formg" id="formg"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="bre" id="bre" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formg1" id="formg1"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="bre1" id="bre1" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formg2" id="formg2"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="bre2" id="bre2" class="align-right">
+										</form>
+									</div>                 
+								</td>
+								<td>
+									<div>
+										<form name="formg3" id="formg3"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="bre3" id="bre3" class="align-right">
+										</form>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="padding2-horizontal-tableau2 padding-vertical-tableau2">
+									Full
+								</td>
+								<td>
+									<div>
+										<form name="formh" id="formh"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="full" id="full" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formh1" id="formh1"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="full1" id="full1" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formh2" id="formh2"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="full2" id="full2" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formh3" id="formh3"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="full3" id="full3" class="align-right">
+										</form>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="padding2-horizontal-tableau2  padding-vertical-tableau2">
+									Petite suite
+								</td>
+								<td>
+									<div>
+										<form name="formi" id="formi"  class="padding-vertical-tableau2 padding-vertical-tableau2 ">
+											<input type="number" min="0" max="999" size="10"  name="pesuite" id="pesuite" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formi1" id="formi1"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="pesuite1" id="pesuite1" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formi2" id="formi2"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="pesuite2" id="pesuite2" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formi3" id="formi3"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="pesuite3" id="pesuite3" class="align-right">
+										</form>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="padding2-horizontal-tableau2 padding-vertical-tableau2">
+									Grande suite
+								</td>
+								<td>
+									<div>
+										<form name="formj" id="formj"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="grsuite" id="grsuite" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formj1" id="formj1"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="grsuite1" id="grsuite1" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formj2" id="formj2"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="grsuite2" id="grsuite2" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formj3" id="formj3"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="grsuite3" id="grsuite3" class="align-right">
+										</form>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="padding2-horizontal-tableau2 padding-vertical-tableau2">
+									Chance
+								</td>
+								<td>
+									<div>
+										<form name="formk" id="formk"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="chance" id="chance" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formk1" id="formk1"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10" name="chance1" id="chance1" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formk2" id="formk2"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="chance2" id="chance2" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formk3" id="formk3"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="chance3" id="chance3" class="align-right">
+										</form>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="padding2-horizontal-tableau2 padding-vertical-tableau2 ">
+									Carré
+								</td>
+								<td>
+									<div>
+										<form name="forml" id="forml"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="carre" id="carre" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="forml1" id="forml1"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="carre1" id="carre1" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="forml2" id="forml2"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="carre2" id="carre2" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="forml3" id="forml3"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="carre3" id="carre3" class="align-right">
+										</form>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="padding2-horizontal-tableau2 padding-vertical-tableau2">
+									Yams
+								</td>
+								<td>
+									<div>
+										<form name="formm" id="formm"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="quintuple" id="quintuple" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formm1" id="formm1"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="quintuple1" id="quintuple1" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formm2" id="formm2"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="quintuple2" id="quintuple2" class="align-right">
+										</form>
+									</div>
+								</td>
+								<td>
+									<div>
+										<form name="formm3" id="formm3"  class="padding-vertical-tableau2">
+											<input type="number" min="0" max="999" size="10"  name="quintuple3" id="quintuple3" class="align-right">
+										</form>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="padding2-horizontal-tableau2 padding-vertical-tableau2">
+									Total
+								</td>
+								<td>
+									<div class="center-total padding-vertical-tableau2">
+										<div>                               
+											<input type="button" value="  =  " onclick="somme()" class="style-buttons margin-total">
+										</div>
+										<div>
+											<form name="form13" id="form13">
+												<input type="number" min="0" max="999" size="10"  name="total" id="total" readonly class="align-right">
+											</form>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="center-total padding-vertical-tableau2">
+										<div>
+											<input type="button" value="  =  " onclick="somme1()" class="style-buttons margin-total" />
+										</div>
+										<div>
+											<form name="form13a" id="form13a">
+												<input type="number" min="0" max="999" size="10"  name="total1" id="total1" readonly class="align-right">
+											</form>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="center-total padding-vertical-tableau2">
+										<div>
+											<input type="button" value="  =  " onclick="somme2()" class="style-buttons margin-total" />
+										</div>
+										<div>
+											<form name="form13b" id="form13b">
+												<input type="number" min="0" max="999" size="10"  name="total2" id="total2" readonly class="align-right">
+											</form>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="center-total padding-vertical-tableau2">
+										<div>						
+											<input type="button" value="  =  " onclick="somme3()" size="2" class="style-buttons margin-total" />
+										</div> 
+										<div>
+											<form name="form13c" id="form13c"  >
+												<input type="number" min="0" max="999" size="10"  name="total3" id="total3" readonly class="align-right">
+											</form>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="5">
+									<form name="form14" id="form14"  class="padding-vertical-tableau2">
+										<input type="reset" value="RAZ" onclick="initial()" class="style-buttons" />
+									</form>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<script src="scripts/script.js"></script>
+					<script src="scripts/date.js"></script>  
+				</div>
+			</div>
+		</div>	
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

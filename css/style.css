@@ -1,0 +1,102 @@
+body 
+{
+ font-family : Arial, Verdana, sans-serif;
+ background-color : #22B14C;
+ font-size : 13px;
+}
+
+/* Les boutons  */
+
+#buttons-position
+{
+	padding-top:10%;   	
+	margin-bottom:7%;
+	width:50%;	
+    
+}
+
+.style-buttons{
+	background-color:gold;
+	font-weight:bold;
+	border-radius:5px;
+	border: 3px solid brown; 
+	cursor:pointer;
+}
+
+/*Nombre de lancers*/
+
+#ancre{	
+	font-size:16px;
+	font-weight:bold;	
+}
+
+
+
+#clock
+{
+
+width : 25%;
+font-size : 14px;
+font-weight:bold;
+background-color:yellow;
+border:2px solid gold;
+border-radius:10px;
+color:brown;
+font-size:20px;
+text-align : center;
+}
+
+ /* tableau des résultats  */
+
+#tableau2
+{
+border:3px solid gold;
+font-weight : bold;
+margin-top:10%;
+margin-bottom:10%;
+font-size:16px;
+}
+
+
+.padding-horizontal-tableau2
+{
+	padding-left:5%;
+	padding-right:5%;
+}
+.padding-horizontal-tableau3{
+	padding-left:20%;
+}
+
+.padding2-horizontal-tableau2
+{
+	padding-left:10%;
+	
+}
+
+.padding-vertical-tableau2 
+{
+	text-align:center;
+	vertical-align: middle;
+	padding-top:3%;
+	padding-bottom:3%;
+}
+
+
+.center-total
+{
+	text-align:center;
+}
+
+
+
+
+.margin-total {/*espacement vers le bas entre le bouton "=" et le champ "total" */
+	margin-bottom:10%;
+}
+
+
+
+.align-right /*alignement des chiffres à droite */
+{
+text-align:right;
+}
